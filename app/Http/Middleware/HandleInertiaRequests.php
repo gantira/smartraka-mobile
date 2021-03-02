@@ -12,7 +12,7 @@ class HandleInertiaRequests extends Middleware
      *
      * @var string
      */
-    protected $rootView = 'dashboard';
+    protected $rootView = 'layouts.owner';
 
     /**
      * Determine the current asset version.

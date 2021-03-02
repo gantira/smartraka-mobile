@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Owner\Laporan\HarianController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,7 +17,9 @@ use Inertia\Inertia;
 |
 */
 
-Route::prefix('admin')->group(function () {
+Auth::loginUsingId(1);
+
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
@@ -23,16 +27,13 @@ Route::prefix('admin')->group(function () {
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
         ]);
-    });
+    })->name('index');
 });
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+Route::prefix('laporan')->name('laporan.')->group(function () {
+    Route::prefix('harian')->name('harian.')->group(function () {
+        Route::get('/', [HarianController::class, 'index'])->name('index');
+    });
 });
 
 Route::get('/dashboard', function () {
