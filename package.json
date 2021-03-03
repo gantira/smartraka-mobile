@@ -26,6 +26,9 @@
         "vue-loader": "^16.1.2"
     },
     "dependencies": {
-        "gentelella": "^1.4.0"
+        "gentelella": "^1.4.0",
+        "moment": "^2.29.1",
+        "vue-time-date-range-picker": "^1.2.2",
+        "vue3-datepicker": "^0.2.4"
     }
 }

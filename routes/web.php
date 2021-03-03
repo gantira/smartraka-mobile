@@ -17,7 +17,7 @@ use Inertia\Inertia;
 |
 */
 
-Auth::loginUsingId(1);
+Auth::loginUsingId(4);
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
@@ -35,6 +35,8 @@ Route::prefix('laporan')->name('laporan.')->group(function () {
         Route::get('/', [HarianController::class, 'index'])->name('index');
     });
 });
+
+Route::get('/', [HarianController::class, 'index'])->name('index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
